@@ -63,7 +63,7 @@ def update_post(id:int, updated_post: schemas.PostUpdate, db: Session = Depends(
         
     if post.owner_id != current_user.id:
         raise HTTPException(status_code=status.HTTP_403_FORBIDDEN,
-                            detail=f"Not authorized to perform requested action")
+                            detail=f"Not authorized to perform requested action ")
         
     post_query.update({'title': updated_post.title, 'content': updated_post.content, 'published': updated_post.published}, synchronize_session=False)        
     db.commit()
