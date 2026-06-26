@@ -14,7 +14,7 @@ class Post(Base):
     created_at = Column(TIMESTAMP(timezone=True), nullable=False, server_default=text('now()'))
     owner_id = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
 
-    owner = relationship("User")
+    owner = relationship("User") #referencing the actual sqlalchemy class User which is defined below. This will help us to get the user details when we query the post table.
 
 class User(Base):
     __tablename__ = "users"

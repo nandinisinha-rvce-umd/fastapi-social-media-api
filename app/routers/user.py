@@ -1,6 +1,5 @@
 from typing import List
-from fastapi import FastAPI, Response, status, HTTPException, Depends, APIRouter
-import time
+from fastapi import status, HTTPException, Depends, APIRouter
 from sqlalchemy.orm import Session
 
 from app import oauth2
