@@ -1,3 +1,4 @@
+#  database tables. We use SQLAlchemy to define the models and their relationships.
 from sqlalchemy import Column, Integer, String, Boolean, ForeignKey
 from sqlalchemy.sql.expression import text
 from sqlalchemy.sql.sqltypes import TIMESTAMP
@@ -24,6 +25,7 @@ class User(Base):
     password = Column(String, nullable=False)
     created_at = Column(TIMESTAMP(timezone=True), 
                         nullable=False, server_default=text('now()'))
+    phone_number = Column(String, nullable=True)
     
 class Vote(Base):
     __tablename__ = "votes"

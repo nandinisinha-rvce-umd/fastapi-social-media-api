@@ -14,5 +14,6 @@ class Settings(BaseSettings):
     class Config:
         env_file = ".env"
         
-settings = Settings()
+settings = Settings() 
+#instance of the Settings class, which will read the environment variables from the .env file and make them available as attributes of the settings object.
 

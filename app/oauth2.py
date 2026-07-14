@@ -1,3 +1,4 @@
+# This file will contain the code for handling OAuth2 authentication in our FastAPI application. We will use the `jwt` library to create and verify JSON Web Tokens (JWTs) for user authentication.
 from fastapi import Depends,HTTPException,status
 import jwt 
 from jwt.exceptions import ExpiredSignatureError, InvalidTokenError
@@ -49,4 +50,6 @@ def get_current_user(token: str = Depends(oauth2_scheme), db: Session = Depends(
     )
     token = verify_access_token(token, credentials_exception)
     db_user = db.query(models.User).filter(models.User.id == token.id).first()
+    if db_user is None:
+        raise credentials_exception
     return db_user
